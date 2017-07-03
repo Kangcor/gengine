@@ -1,0 +1,16 @@
+<div class="well text-center">
+  <div *ngFor="let row of world.tiles" style="margin: auto; width: 400px">
+    <div class="tile" *ngFor="let tile of row"
+         [ngClass]="{
+           'blackBg':   tile.char === '_',
+           'redBg':     tile.char === '1',
+           'blueBg':    tile.char === '2',
+           'greenBg':   tile.char === '3',
+           'yellowBg':  tile.char === '4',
+           'player':    tile.player}">
+      {{tile.char}}
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <div class="clearfix"></div>
+</div>

@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+
+span {
+  font-family: "Courier New", Courier, monospace;
+}
+
+p {
+  font-family: "Courier New", Courier, monospace;
+}

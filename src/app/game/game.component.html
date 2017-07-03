@@ -1,0 +1,16 @@
+<gen-world [world]="world"></gen-world>
+<hr>
+<div class="row">
+  <div class="col-xs-4" *ngIf="!gameEnded()">
+    Turn: {{game.turn}}
+    <button class="btn btn-default" (click)="play()" [disabled]="gameEnded()">Play</button>
+    <button class="btn btn-default" (click)="nextRound()" [disabled]="gameEnded()">Next</button>
+    <button class="btn btn-default" (click)="nextRoundTimes(10)" [disabled]="gameEnded()">10 Rounds</button>
+  </div>
+  <div class="col-xs-4" *ngIf="gameEnded()">
+    <h4>Game has ended</h4>
+  </div>
+  <div class="col-xs-8">
+    <gen-score [world]="world" [players]="players"></gen-score>
+  </div>
+</div>

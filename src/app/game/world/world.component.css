@@ -1,0 +1,31 @@
+.blackBg {
+  background: black;
+}
+
+.redBg {
+  background: lightcoral;
+}
+
+.blueBg {
+  background: lightblue;
+}
+
+.greenBg {
+  background: lightgreen;
+}
+
+.yellowBg {
+  background: lightgoldenrodyellow;
+}
+
+.tile {
+  float: left;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, .2);
+}
+
+.player {
+  border: 1px solid darkorchid;
+}
