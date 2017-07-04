@@ -1,28 +1,73 @@
 # Gengine
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.1.
+![Juego inicial](http://i.imgur.com/fh3eiag.png "Juego inicial")
 
-## Development server
+Gesco Game Engine
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Como instalar
 
-## Code scaffolding
+Si ya tienes instalado `npm en tu ordenador, clona el repositorio en local y ejecuta `npm install`.
+Una vez completada la instalación, el comando `npm start` arrancará un servidor al que podrás acceder en la ruta `http://localhost:4200`.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+El servidor se actualizará cada vez que haya cambios en el código de forma automática.
 
-## Build
+## Normas de juego
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+El tablero de juego está compuesto por un mapa de dimensiones conocidas, sobre el que compiten cuatro jugadores.
+La posición inicial de cada jugador es aleatoria, así como una serie de obstáculos que impiden el paso.
+Cada turno es posible realizar un movimiento de una unidad en cualquier dirección (vertical u horizontal), al 
+desplazarte pintas la superficie sobre la que estás y pasa a ser de tu control. 
 
-## Running unit tests
+No es posible moverse a una zona pintada por un rival, ni tampoco donde haya un obstáculo.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Cada turno se mueven los 4 jugadores, siempre que el movimiento sea válido siguiendo las normas del juego.
 
-## Running end-to-end tests
+La puntuación de cada jugador es la cantidad de posiciones que tiene pintadas de su color.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Al finalizar los turnos decididos al comienzo de la partida, gana el jugador que controla mas posiciones del mapa.
 
-## Further help
+## Como jugar
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Para jugar es necesario editar el archivo `gengine/src/app/player/my-player.ts`.
+En ese archivo encontraréis mas indicaciones de cual es la función a modificar, que información de entrada hay y el formato de la salida esperada.
+
+Una vez editada la lógica de vuestro jugador (inicialmente ya tiene un comportamiento), podéis ir al navegador
+y comenzar a jugar. Se puede ver el cambio cada turno, 10 turnos seguidos o ver la partida de principio a fin según el botón que se pulse.
+
+![Juego tras varios turnos](http://i.imgur.com/lA8MJmR.png "Juego tras varios turnos")
+
+## Funciones disponibles
+
+Para fijar unas normas que se apliquen a todos por igual, queda prohibido modificar cualquier parámetro del juego,
+únicamente es posible leer información y emitir una nueva posición en el return de la función.
+
+### elementAtPosition(world, x, y) 
+
+Recibe el objeto `world` y unas coordenadas `x` e `y`.
+
+Las posibles respuestas que puede devolver son: 
+* **'outside horizontal axis'**: La posición enviada se sale del mapa por el eje X (horizontal)
+* **'outside vertical axis'**: La posición enviada se sale del mapa por el eje Y (vertical)
+* **'empty'**: Coordenada vacía
+* **'mountain'**: Coordenada con un bloqueo, no es posible acceder a esa posición
+* **'player 1'**: Coordenada ocupada por el jugador 1
+* **'controlled by player 1'**: Coordenada controlada por el jugador 1
+* **'player 2'**: Coordenada ocupada por el jugador 2
+* **'controlled by player 2'**: Coordenada controlada por el jugador 2
+* **'player 3'**: Coordenada ocupada por el jugador 3
+* **'controlled by player 3'**: Coordenada controlada por el jugador 3
+* **'player 4'**: Coordenada ocupada por el jugador 4
+* **'controlled by player 4'**: Coordenada controlada por el jugador 4
+
+## Consideraciones
+
+Para uso personal se puede modificar todo lo que se desee la plataforma para hacer pruebas o provocar comportamientos
+deseados, pero a la hora de competir, se revisará el código de forma manual antes de disputar las rondas con el 
+resto de jugadores, siendo descalificados los que usen código fuera de las normas (previo aviso por si se trata de un error).
+
+## Mejoras
+
+Cualquier aporte es bienvenido, puedes ponerte en contacto conmigo para trabajar de forma conjunta o bien enviar una pull request 
+para que la añada al repositorio.
+Las mejoras de la plataforma serán incluidas en este repositorio para que cualquier persona pueda actualizar 
+a la última versión.
