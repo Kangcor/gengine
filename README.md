@@ -6,7 +6,9 @@ Gesco Game Engine
 
 ## Como instalar
 
-Si ya tienes instalado `npm en tu ordenador, clona el repositorio en local y ejecuta `npm install`.
+Si no tienes `npm` en tu ordenador, sigue las [instrucciones de la web oficial](https://nodejs.org/es/download/package-manager/#osx).
+
+Si ya tienes instalado `npm` en tu ordenador, clona el repositorio en local y ejecuta `npm install`.
 Una vez completada la instalación, el comando `npm start` arrancará un servidor al que podrás acceder en la ruta `http://localhost:4200`.
 
 El servidor se actualizará cada vez que haya cambios en el código de forma automática.
