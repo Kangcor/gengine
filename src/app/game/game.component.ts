@@ -29,8 +29,8 @@ export class GameComponent implements OnInit {
     );
   }
 
-  newGame() {
-    this.game = new Game();
+  newGame(endTurn) {
+    this.game = new Game(endTurn);
     this.players = [
       new MyPlayer('1'),
       new PlayerDumb('2'),

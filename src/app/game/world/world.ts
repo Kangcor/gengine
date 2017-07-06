@@ -15,7 +15,7 @@ export class World {
       }
       this.tiles.push(arr);
     }
-    for (let i = 0; i < 12; i++) {
+    for (let i = 0; i < 30; i++) {
       this.putMountains();
     }
   }
