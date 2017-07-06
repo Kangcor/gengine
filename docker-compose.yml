@@ -1,0 +1,13 @@
+version: '2'
+
+services:
+
+  node:
+    build:
+      context: .
+      dockerfile: ./compose/node/Dockerfile
+    command: "npm start"
+    volumes:
+      - ./src:/usr/src/app/src
+    ports:
+      - "4200:4200"
