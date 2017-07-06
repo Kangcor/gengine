@@ -1,16 +1,43 @@
-<gen-world [world]="world"></gen-world>
+<div class="form-group row">
+  <div class="col-md-1">
+    <label>Width</label>
+    <input class="form-control" title="World width" type="text" [(ngModel)]="worldWidth" [disabled]="!gameEnded()">
+  </div>
+  <div class="col-md-1">
+    <label>Heigth</label>
+    <input class="form-control" title="World heigth" type="text" [(ngModel)]="worldHeight" [disabled]="!gameEnded()">
+  </div>
+  <div class="col-md-1">
+    <label>Go</label>
+    <button class="btn btn-default" (click)="newGame()" [disabled]="!gameEnded()">Generate</button>
+  </div>
+</div>
+<gen-world [world]="world" [size]="{ x: worldWidth, y: worldHeight }"  *ngIf="game"></gen-world>
 <hr>
+<div class="row text-center">
+  <div class="col-md-12">
+    <span *ngIf="!gameEnded()">Turn: {{game?.turn}}</span>
+  </div>
+</div>
+<div class="row text-center">
+  <div class="col-md-3"></div>
+  <div class="col-md-6">
+    <div class="well">
+      <gen-score *ngIf="game" [world]="world" [players]="players"></gen-score>
+    </div>
+  </div>
+</div>
 <div class="row">
-  <div class="col-xs-4" *ngIf="!gameEnded()">
-    Turn: {{game.turn}}
-    <button class="btn btn-default" (click)="play()" [disabled]="gameEnded()">Play</button>
-    <button class="btn btn-default" (click)="nextRound()" [disabled]="gameEnded()">Next</button>
-    <button class="btn btn-default" (click)="nextRoundTimes(10)" [disabled]="gameEnded()">10 Rounds</button>
+  <div class="col-md-">
+    <button class="btn btn-default" (click)="play(500)" [disabled]="gameEnded()"><span class="glyphicon glyphicon-play"></span></button>
+    <button class="btn btn-default" (click)="play(250)" [disabled]="gameEnded()"><span class="glyphicon glyphicon-fast-forward"></span></button>
+    <button class="btn btn-default" (click)="play(50)" [disabled]="gameEnded()"><span class="glyphicon glyphicon-flash"></span></button>
+    <button class="btn btn-default" (click)="pause()" [disabled]="gameEnded()"><span class="glyphicon glyphicon-pause"></span></button>
+    <button class="btn btn-default" (click)="nextRoundTimes(10)" [disabled]="gameEnded()"><span class="glyphicon glyphicon-forward">X10</span></button>
   </div>
-  <div class="col-xs-4" *ngIf="gameEnded()">
+</div>
+<div class="row">
+  <div class="col-md-4" *ngIf="gameEnded()">
     <h4>Game has ended</h4>
-  </div>
-  <div class="col-xs-8">
-    <gen-score [world]="world" [players]="players"></gen-score>
   </div>
 </div>

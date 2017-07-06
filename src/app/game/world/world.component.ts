@@ -8,6 +8,7 @@ import {Component, Input, OnInit} from '@angular/core';
 export class WorldComponent implements OnInit {
 
   @Input() world;
+  @Input() size: { x: number, y: number };
 
   constructor() { }
 

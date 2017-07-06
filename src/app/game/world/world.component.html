@@ -1,5 +1,5 @@
 <div class="well text-center">
-  <div *ngFor="let row of world.tiles" style="margin: auto; width: 400px">
+  <div *ngFor="let row of world.tiles" style="margin: auto" [style.width.px]="size.x * 20">
     <div class="tile" *ngFor="let tile of row"
          [ngClass]="{
            'blackBg':   tile.char === '_',

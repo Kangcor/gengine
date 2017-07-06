@@ -17,11 +17,13 @@ export class GameComponent implements OnInit {
   world: World;
   game: Game;
   score;
+  intervalId;
+  worldWidth = 20;
+  worldHeight = 20;
 
-  constructor(private scoreService: ScoreService) { }
+  constructor(private scoreService: ScoreService) {}
 
   ngOnInit() {
-    this.newGame();
     this.scoreService.score.subscribe(
       (score) => this.score = score
     );
@@ -36,7 +38,7 @@ export class GameComponent implements OnInit {
       new PlayerDumb('4')
     ];
 
-    this.world = new World(20, 20);
+    this.world = new World(this.worldWidth, this.worldHeight);
     for (const player of this.players) {
       const {x, y} = this.world.getRandomPosition();
       player.x = x;
@@ -53,7 +55,8 @@ export class GameComponent implements OnInit {
   }
 
   gameEnded() {
-    return this.game.gameEnded();
+    if (this.game) return this.game.gameEnded();
+    return true;
   }
 
   nextRound() {
@@ -76,14 +79,19 @@ export class GameComponent implements OnInit {
       }
       times--;
       this.nextRound();
-    }, 500);
+    }, 50);
   }
 
-  play() {
-    const intervalId = setInterval( () => {
-      if (this.gameEnded()) clearInterval(intervalId);
+  play(speed: number) {
+    clearInterval(this.intervalId);
+    this.intervalId = setInterval( () => {
+      if (this.gameEnded()) clearInterval(this.intervalId);
       this.nextRound();
-    }, 500);
+    }, speed);
+  }
+
+  pause() {
+    clearInterval(this.intervalId);
   }
 
   movePlayer(nextMove, player) {

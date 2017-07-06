@@ -1,5 +1,10 @@
 import {EventEmitter, Injectable} from '@angular/core';
 
+class Score {
+  score: number;
+  name: string;
+}
+
 @Injectable()
 export class ScoreService {
 
