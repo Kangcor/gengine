@@ -36,9 +36,10 @@ export class GameComponent implements OnInit {
       new MyPlayer('1'),
       new PlayerDumb('2'),
       new PlayerDumb('3'),
-      new Examinador('4')
+      new PlayerDumb('4')
     ];
-
+    if (this.worldWidth % 2 === 1) this.worldWidth++;
+    if (this.worldHeight % 2 === 1) this.worldHeight++;
     this.world = new World(this.worldWidth, this.worldHeight);
     for (const player of this.players) {
       const {x, y} = this.world.getRandomPositionToStart();

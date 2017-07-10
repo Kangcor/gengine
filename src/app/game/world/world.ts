@@ -74,13 +74,23 @@ export class World {
           --pos.x;
         }
       }
-      if (this.isValidPosition(pos.x, pos.y)) {
+      if (this.isInFirstQuad(pos.x, pos.y)) {
         this.tiles[pos.y][pos.x].char = '_';
       }
     }
   }
 
   private isValidPosition(x, y) {
+    if (x < 0 || x >= Math.floor(this.horizontal)) {
+      return false;
+    } else if (y < 0 || y >= Math.floor(this.vertical)) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  private isInFirstQuad(x, y) {
     if (x < 0 || x >= Math.floor(this.horizontal / 2)) {
       return false;
     } else if (y < 0 || y >= Math.floor(this.vertical / 2)) {
@@ -121,7 +131,7 @@ export class World {
 
   public setPlayerInPositionInitial(code, x, y) {
     this.tiles[y][x] = { char: code, player: true };
-  //  this.clearArea(x, y);
+    this.clearArea(x, y);
   }
 
   public clearPosition(x, y) {
