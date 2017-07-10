@@ -11,7 +11,7 @@ WORKDIR /usr/src/app
 COPY ./package.json /usr/src/app
 
 # Install dependecies
-RUN npm install
+RUN yarn install
 
 # Get all the code needed to run the app
 COPY . /usr/src/app

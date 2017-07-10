@@ -5,6 +5,7 @@ import {ScoreService} from './score/score.service';
 import {PlayerDumb} from '../player/player-dumb';
 import {Game} from './game';
 import {MyPlayer} from '../player/my-player';
+import {Examinador} from '../player/examinador';
 
 @Component({
   selector: 'gen-game',
@@ -35,12 +36,12 @@ export class GameComponent implements OnInit {
       new MyPlayer('1'),
       new PlayerDumb('2'),
       new PlayerDumb('3'),
-      new PlayerDumb('4')
+      new Examinador('4')
     ];
 
     this.world = new World(this.worldWidth, this.worldHeight);
     for (const player of this.players) {
-      const {x, y} = this.world.getRandomPosition();
+      const {x, y} = this.world.getRandomPositionToStart();
       player.x = x;
       player.y = y;
     }
