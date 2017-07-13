@@ -5,7 +5,6 @@ import {ScoreService} from './score/score.service';
 import {PlayerDumb} from '../player/player-dumb';
 import {Game} from './game';
 import {MyPlayer} from '../player/my-player';
-import {Examinador} from '../player/examinador';
 
 @Component({
   selector: 'gen-game',

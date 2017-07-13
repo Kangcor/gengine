@@ -6,6 +6,10 @@ Gesco Game Engine
 
 ## Como instalar
 
+UPDATE: En la última versión únicamente es necesario tener `docker` instalado. 
+Para ejecutarlo lanza `docker-compose up --build` en la raiz del proyecto y se arrancará un servidor en
+`localhost:4200` con live-reload. (Gracias a Maurizio Pilia)
+
 Si no tienes `npm` en tu ordenador, sigue las [instrucciones de la web oficial](https://nodejs.org/es/download/package-manager/#osx).
 
 Si ya tienes instalado `npm` en tu ordenador, clona el repositorio en local y ejecuta `npm install`.
